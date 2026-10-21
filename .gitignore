@@ -1,0 +1,9 @@
+# Build-Ausgabe – wird komplett von CMake/Ninja erzeugt
+build/
+
+# Persönliche CMake-Einstellungen (gehören nicht ins Repo)
+CMakeUserPresets.json
+
+# Caches von Visual Studio / clangd
+.vs/
+.cache/
