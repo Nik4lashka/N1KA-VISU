@@ -14,6 +14,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Schreibt build/<preset>/compile_commands.json (für clangd / clang-tidy)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(cmake/Dependencies.cmake)
+
 add_executable(visu src/main.cpp)
 
 target_compile_options(visu PRIVATE -Wall -Wextra -Wpedantic)
+
+target_link_libraries(visu PRIVATE imgui)

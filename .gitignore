@@ -7,3 +7,6 @@ CMakeUserPresets.json
 # Caches von Visual Studio / clangd
 .vs/
 .cache/
+
+# ImGui speichert hier Fensterpositionen/-größen
+imgui.ini
