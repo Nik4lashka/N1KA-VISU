@@ -19,7 +19,17 @@ FetchContent_Declare(imgui
     GIT_SHALLOW    TRUE
 )
 
-FetchContent_MakeAvailable(glfw imgui)
+# --- Catch2: Framework für Unit-Tests ----------------------------------------
+FetchContent_Declare(Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v3.16.1
+    GIT_SHALLOW    TRUE
+)
+
+FetchContent_MakeAvailable(glfw imgui Catch2)
+
+# Macht include(Catch) mit catch_discover_tests() verfügbar (siehe tests/)
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
 find_package(OpenGL REQUIRED)
 

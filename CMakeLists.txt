@@ -16,8 +16,17 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(cmake/Dependencies.cmake)
 
+# Warnungen als INTERFACE-Target: Wer es linkt, bekommt die Optionen
+add_library(visu_warnings INTERFACE)
+target_compile_options(visu_warnings INTERFACE -Wall -Wextra -Wpedantic)
+
+# Logik ohne GUI (eigene Library, siehe src/core/CMakeLists.txt)
+add_subdirectory(src/core)
+
+# Das Programm mit Fenster
 add_executable(visu src/main.cpp)
+target_link_libraries(visu PRIVATE imgui visu_warnings)
 
-target_compile_options(visu PRIVATE -Wall -Wextra -Wpedantic)
-
-target_link_libraries(visu PRIVATE imgui)
+# Unit-Tests
+enable_testing()
+add_subdirectory(tests)
